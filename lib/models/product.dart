@@ -2,7 +2,7 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 
-class Product {
+class Product with ChangeNotifier {
   final String id;
   final String title;
   final String desc;
@@ -28,7 +28,7 @@ class ProductDataProvider with ChangeNotifier {
         imgUrl:
             'https://vzboltay.com/uploads/posts/2015-03/1427122366_pina-colada.jpg',
         price: 150.0,
-        color: Colors.blue[200]),
+        color: Colors.blue[100]),
     Product(
         id: '2',
         title: 'Санта-Мария',

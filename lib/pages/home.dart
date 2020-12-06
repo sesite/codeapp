@@ -1,8 +1,13 @@
+import 'package:codeapp/models/product.dart';
+import 'package:codeapp/widgets/item_cart.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final productData = Provider.of<ProductDataProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('CodeApp'),
@@ -39,7 +44,17 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Container(
-                child: Text('Горизонтальный список карточек'),
+                height: 280,
+                padding: const EdgeInsets.all(5),
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: productData.items.length,
+                  itemBuilder: (context, int index) =>
+                      ChangeNotifierProvider.value(
+                    value: productData.items[index],
+                    child: ItemCart(),
+                  ),
+                ),
               ),
               Padding(
                 padding: EdgeInsets.all(10),

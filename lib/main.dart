@@ -1,3 +1,4 @@
+import 'package:codeapp/models/cart.dart';
 import 'package:codeapp/models/product.dart';
 import 'package:codeapp/pages/home.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,10 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<ProductDataProvider>(
           create: (context) => ProductDataProvider(),
-        )
+        ),
+        ChangeNotifierProvider<CartDataProvider>(
+          create: (context) => CartDataProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -11,7 +11,7 @@ class Cart {
   Cart({this.id, this.title, this.number, this.price, this.imgUrl});
 }
 
-class CardDataProvider with ChangeNotifier {
+class CartDataProvider with ChangeNotifier {
   Map<String, Cart> _cartItems = {};
 
   UnmodifiableMapView<String, Cart> get cartItem =>
