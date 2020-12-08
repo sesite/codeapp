@@ -14,7 +14,7 @@ class Cart {
 class CartDataProvider with ChangeNotifier {
   Map<String, Cart> _cartItems = {};
 
-  UnmodifiableMapView<String, Cart> get cartItem =>
+  UnmodifiableMapView<String, Cart> get cartItems =>
       UnmodifiableMapView(_cartItems);
 
   int get cartItemCount => _cartItems.length;

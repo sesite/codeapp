@@ -1,4 +1,6 @@
 import 'package:codeapp/models/product.dart';
+import 'package:codeapp/widgets/bottom_bar.dart';
+import 'package:codeapp/widgets/catalog_list_tile.dart';
 import 'package:codeapp/widgets/item_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -66,14 +68,14 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                child: Text('Список каталогов'),
-              ),
+              ...productData.items.map((e) {
+                return CatalogListTile(img: e.imgUrl);
+              }).toList(),
             ],
           ),
         ),
       ),
-      // ! ботом бар
+      bottomNavigationBar: BottomBar(),
     );
   }
 }
