@@ -1,4 +1,5 @@
 import 'package:codeapp/models/cart.dart';
+import 'package:codeapp/pages/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -99,6 +100,10 @@ class BottomBar extends StatelessWidget {
                   IconButton(
                     onPressed: () {
                       //! to cart
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CartPage()),
+                      );
                     },
                     icon: Icon(Icons.shopping_bag),
                   ),
