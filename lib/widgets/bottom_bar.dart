@@ -8,7 +8,7 @@ class BottomBar extends StatelessWidget {
     final cartData = Provider.of<CartDataProvider>(context);
 
     return BottomAppBar(
-      //color: ,
+      color: Colors.transparent,
       child: Container(
         height: 60.0,
         decoration: BoxDecoration(
@@ -24,7 +24,7 @@ class BottomBar extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: cartData.cartItems.length,
                 itemBuilder: (context, index) {
-                  Hero(
+                  return Hero(
                     tag: cartData.cartItems.values.toList()[index].imgUrl,
                     child: GestureDetector(
                       onTap: () {
@@ -54,7 +54,10 @@ class BottomBar extends StatelessWidget {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                            child: Icon(Icons.star),
+                            /* child: Icon(
+                              Icons.star,
+                              color: Colors.transparent,
+                            ), */
                           ),
                           Positioned(
                             right: 2.0,
@@ -88,7 +91,7 @@ class BottomBar extends StatelessWidget {
             ),
             Container(
               height: 50.0,
-              width: MediaQuery.of(context).size.width / 2 + 50,
+              width: 120,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
