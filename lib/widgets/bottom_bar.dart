@@ -1,5 +1,6 @@
 import 'package:codeapp/models/cart.dart';
 import 'package:codeapp/pages/cart_page.dart';
+import 'package:codeapp/pages/item_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -30,6 +31,14 @@ class BottomBar extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () {
                         //! page coctail
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ItemPage(
+                              itemid: cartData.cartItems.keys.toList()[index],
+                            ),
+                          ),
+                        );
                       },
                       child: Stack(
                         alignment: Alignment.center,

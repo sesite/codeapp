@@ -72,14 +72,17 @@ class CartDataProvider with ChangeNotifier {
 
 //Обновить корзину товара на -1
   void updateItemsSubOne(String productId) {
-    _cartItems.update(
-        productId,
-        (value) => Cart(
-            id: value.id,
-            title: value.title,
-            price: value.price,
-            imgUrl: value.imgUrl,
-            number: value.number - 1));
+    if (_cartItems[productId].number < 2) {
+      deleteItem(productId);
+    } else
+      _cartItems.update(
+          productId,
+          (value) => Cart(
+              id: value.id,
+              title: value.title,
+              price: value.price,
+              imgUrl: value.imgUrl,
+              number: value.number - 1));
     notifyListeners();
   }
 

@@ -1,5 +1,6 @@
 import 'package:codeapp/models/cart.dart';
 import 'package:codeapp/models/product.dart';
+import 'package:codeapp/pages/item_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,6 +24,12 @@ class ItemCart extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 //! навигации детэил
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ItemPage(itemid: product.id),
+                  ),
+                );
               },
               child: Container(
                 height: 160,

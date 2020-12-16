@@ -1,4 +1,5 @@
 import 'package:codeapp/models/cart.dart';
+import 'package:codeapp/widgets/cart_item_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +19,13 @@ class CartPage extends StatelessWidget {
               child: Container(
                 height: 100,
                 width: double.infinity,
-                child: Text('Корзина пустая'),
+                child: Center(
+                  child: StreamBuilder<Object>(
+                      stream: null,
+                      builder: (context, snapshot) {
+                        return Text('Корзина пуста');
+                      }),
+                ),
               ),
             )
           : Column(
@@ -28,11 +35,24 @@ class CartPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
-                      'Стоимость:' + cartData.totalAmount.toStringAsFixed(2),
+                      cartData.cartItems.length.toString() +
+                          'Стоимость: ' +
+                          cartData.totalAmount.toStringAsFixed(2),
                       style: TextStyle(fontSize: 20.0),
-                    )
+                    ),
+                    MaterialButton(
+                      onPressed: () {
+                        cartData.clear();
+                      },
+                      color: Theme.of(context).primaryColor,
+                      child: Text('Купить'),
+                    ),
                   ],
-                )
+                ),
+                Divider(),
+                Expanded(
+                  child: CartItemList(cartData: cartData),
+                ),
               ],
             ),
     );
